@@ -5,9 +5,15 @@ from .forms import ProductForm
 
 
 def index_view(request):
-    data = Product.objects.all()
+    data = Product.objects.all().order_by('category', 'name')
+    above_zero = []
+    for i in data:
+        if i.amount > 1:
+            above_zero.append(i)
+        else:
+            pass
     return render(request, 'index.html', context={
-        'products': data
+        'products': above_zero
     })
 
 

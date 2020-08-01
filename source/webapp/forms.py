@@ -11,4 +11,4 @@ class ProductForm(forms.Form):
                                initial=DEFAULT_CATEGORY)
     amount = forms.IntegerField(label='Остаток', validators=[(MinValueValidator(0))])
     price = forms.DecimalField(label='Цена', max_digits=7, decimal_places=2)
-    img = forms.CharField(label='Ссылка на фотографию')
+    img = forms.CharField(required=False, label='Ссылка на фотографию')
