@@ -10,21 +10,21 @@
 
 {% block content %}
     <h1 id="main-center">Вы уверены, что хотите удалить запись?</h1>
-    <div class="card my-4" style="width: 18rem">
+    <div id="card-view" class="card my-4" style="width: 18rem">
         <img class="photo" src="{{ product.img }}">
-        <div class="card-body">
-            <h5 class="card-title">{{ product.name }}
-            <i><h6 class="card-category">{{ product.get_category_display }}</h6></i>
-            <hr/>
-            <p class="card-text px-2">{{ product.description }}</p>
-            <hr/>
-            <p class="price">Цена: {{ product.price }}</p>
-            <p class="price">Остаток: {{ product.amount }}</p>
-        </div>
+          <div class="card-body">
+              <h5 class="card-title">{{ product.name }}</h5>
+              <i><h6 class="card-category">{{ product.get_category_display }}</h6></i>
+                  <hr/>
+              <p class="card-text px-2">{{ product.description }}</p>
+                  <hr/>
+              <p class="price">Цена: {{ product.price }}</p>
+              <p class="price">Остаток: {{ product.amount }}</p>
+          </div>
     </div>
     <form action="{% url "delete" product.pk %}" method="post">
         {% csrf_token %}
-        <p><input id="delete-button" type="submit" value="Да" id="submit"></p>
-        <p><a id="delete-button-2" href="{% url 'index' %}">Нет</a></p>
+        <p><input type="submit" value="Да" id="submit" class="btn btn-warning mt-5 ml-5 btn-lg"></p>
+        <p><a class="btn btn-info ml-5 btn-lg" href="{% url 'index' %}">Нет</a></p>
     </form>
 {% endblock %}
